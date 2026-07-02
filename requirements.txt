@@ -1,0 +1,6 @@
+dash
+dash-cytoscape
+dash-bootstrap-components
+networkx
+pandas
+plotly

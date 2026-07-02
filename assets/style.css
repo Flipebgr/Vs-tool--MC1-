@@ -1,0 +1,71 @@
+body{
+
+    margin:0;
+
+    font-family:Segoe UI;
+
+    background:#f5f6fa;
+
+}
+
+.header{
+
+    background:#1e293b;
+
+    color:white;
+
+    padding:15px 30px;
+
+}
+
+.title{
+
+    margin:0;
+
+}
+
+.subtitle{
+
+    opacity:.7;
+
+}
+
+.main-container{
+
+    display:flex;
+
+    height:75vh;
+
+}
+
+.sidebar{
+
+    width:320px;
+
+    background:white;
+
+    padding:20px;
+
+    overflow-y:auto;
+
+    border-right:1px solid #ddd;
+
+}
+
+.graph-container{
+
+    flex:1;
+
+}
+
+.info-panel{
+
+    background:white;
+
+    padding:20px;
+
+    border-top:1px solid #ddd;
+
+    height:18vh;
+
+}
