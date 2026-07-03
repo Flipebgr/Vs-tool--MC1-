@@ -5,8 +5,10 @@ search, filter, timeline...) se registra aqui conforme for sendo
 implementado nos próximos módulos.
 """
 
-from callbacks import node_callbacks
+from callbacks import node_callbacks, graph_callbacks, layout_callbacks
 
 
 def register_callbacks(app):
     node_callbacks.register(app)
+    graph_callbacks.register(app)
+    layout_callbacks.register(app)
