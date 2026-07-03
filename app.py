@@ -1,24 +1,20 @@
 from dash import Dash
 
-from utils.loader import load_json
-from utils.parser import build_graph
-from utils.graph_builder import nx_to_cytoscape
-from utils.statistics import graph_statistics
+from services.graph_service import get_cytoscape_elements
+from services.statistics_service import get_stats_summary
+from callbacks import register_callbacks
 
 from components.layout import create_layout
 
 
-org = load_json("data/org_chart.json")
-
-G = build_graph(org)
-
-elements = nx_to_cytoscape(G)
-
-stats = graph_statistics(G)
+elements = get_cytoscape_elements()
+stats = get_stats_summary()
 
 app = Dash(__name__)
 
 app.layout = create_layout(elements, stats)
+
+register_callbacks(app)
 
 if __name__ == "__main__":
     app.run(debug=True)

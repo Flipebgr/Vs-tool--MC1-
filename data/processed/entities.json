@@ -1,0 +1,526 @@
+{
+  "company:tenant_thread": {
+    "label": "Tenant Thread",
+    "type": "company"
+  },
+  "department:executive_suite": {
+    "label": "Executive Suite",
+    "type": "department"
+  },
+  "department:products": {
+    "label": "Products",
+    "type": "department"
+  },
+  "department:human_resources": {
+    "label": "Human Resources",
+    "type": "department"
+  },
+  "department:legal": {
+    "label": "Legal",
+    "type": "department"
+  },
+  "department:information_technologies": {
+    "label": "Information Technologies",
+    "type": "department"
+  },
+  "department:customer_support": {
+    "label": "Customer Support",
+    "type": "department"
+  },
+  "team:residential_app": {
+    "label": "Residential App",
+    "type": "team"
+  },
+  "team:property_ops_console": {
+    "label": "Property Ops Console",
+    "type": "team"
+  },
+  "team:analytics_suite": {
+    "label": "Analytics Suite",
+    "type": "team"
+  },
+  "team:integrations": {
+    "label": "Integrations",
+    "type": "team"
+  },
+  "team:hiring": {
+    "label": "Hiring",
+    "type": "team"
+  },
+  "team:benefits": {
+    "label": "Benefits",
+    "type": "team"
+  },
+  "team:professional_development": {
+    "label": "Professional Development",
+    "type": "team"
+  },
+  "team:ip": {
+    "label": "IP",
+    "type": "team"
+  },
+  "team:mergers_and_acquisitions": {
+    "label": "Mergers and Acquisitions",
+    "type": "team"
+  },
+  "team:corporate_contracts": {
+    "label": "Corporate Contracts",
+    "type": "team"
+  },
+  "team:client_contracts": {
+    "label": "Client Contracts",
+    "type": "team"
+  },
+  "team:finance": {
+    "label": "Finance",
+    "type": "team"
+  },
+  "team:ai_systems": {
+    "label": "AI Systems",
+    "type": "team"
+  },
+  "team:infrastructure": {
+    "label": "Infrastructure",
+    "type": "team"
+  },
+  "team:helpdesk": {
+    "label": "Helpdesk",
+    "type": "team"
+  },
+  "team:phone_center": {
+    "label": "Phone Center",
+    "type": "team"
+  },
+  "team:billing": {
+    "label": "Billing",
+    "type": "team"
+  },
+  "team:concierge": {
+    "label": "Concierge",
+    "type": "team"
+  },
+  "team:public_relations": {
+    "label": "Public Relations",
+    "type": "team"
+  },
+  "person:liam_anchor": {
+    "label": "Liam Anchor",
+    "type": "person",
+    "title": "CEO"
+  },
+  "person:emma_harbor": {
+    "label": "Emma Harbor",
+    "type": "person",
+    "title": "CFO"
+  },
+  "person:noah_mariner": {
+    "label": "Noah Mariner",
+    "type": "person",
+    "title": "COO"
+  },
+  "person:olivia_keel": {
+    "label": "Olivia Keel",
+    "type": "person",
+    "title": "Department Lead"
+  },
+  "person:william_rudder": {
+    "label": "William Rudder",
+    "type": "person"
+  },
+  "person:ava_tiller": {
+    "label": "Ava Tiller",
+    "type": "person"
+  },
+  "person:james_stern": {
+    "label": "James Stern",
+    "type": "person"
+  },
+  "person:sophia_beacon": {
+    "label": "Sophia Beacon",
+    "type": "person"
+  },
+  "person:benjamin_mooring": {
+    "label": "Benjamin Mooring",
+    "type": "person"
+  },
+  "person:mia_fender": {
+    "label": "Mia Fender",
+    "type": "person"
+  },
+  "person:lucas_compass": {
+    "label": "Lucas Compass",
+    "type": "person"
+  },
+  "person:charlotte_current": {
+    "label": "Charlotte Current",
+    "type": "person"
+  },
+  "person:henry_sail": {
+    "label": "Henry Sail",
+    "type": "person"
+  },
+  "person:amelia_skiff": {
+    "label": "Amelia Skiff",
+    "type": "person"
+  },
+  "person:alexander_jetty": {
+    "label": "Alexander Jetty",
+    "type": "person"
+  },
+  "person:evelyn_dock": {
+    "label": "Evelyn Dock",
+    "type": "person"
+  },
+  "person:michael_capstan": {
+    "label": "Michael Capstan",
+    "type": "person",
+    "title": "Department Lead"
+  },
+  "person:harper_oar": {
+    "label": "Harper Oar",
+    "type": "person"
+  },
+  "person:daniel_gangway": {
+    "label": "Daniel Gangway",
+    "type": "person"
+  },
+  "person:ella_pilot": {
+    "label": "Ella Pilot",
+    "type": "person"
+  },
+  "person:matthew_tide": {
+    "label": "Matthew Tide",
+    "type": "person"
+  },
+  "person:scarlett_wharf": {
+    "label": "Scarlett Wharf",
+    "type": "person"
+  },
+  "person:david_breakwater": {
+    "label": "David Breakwater",
+    "type": "person",
+    "title": "Department Lead"
+  },
+  "person:avery_sextant": {
+    "label": "Avery Sextant",
+    "type": "person"
+  },
+  "person:joseph_buoy": {
+    "label": "Joseph Buoy",
+    "type": "person"
+  },
+  "person:abigail_spinnaker": {
+    "label": "Abigail Spinnaker",
+    "type": "person"
+  },
+  "person:sebastian_cutter": {
+    "label": "Sebastian Cutter",
+    "type": "person"
+  },
+  "person:emily_ferry": {
+    "label": "Emily Ferry",
+    "type": "person"
+  },
+  "person:jack_helm": {
+    "label": "Jack Helm",
+    "type": "person"
+  },
+  "person:grace_lifeboat": {
+    "label": "Grace Lifeboat",
+    "type": "person"
+  },
+  "person:samuel_gull": {
+    "label": "Samuel Gull",
+    "type": "person"
+  },
+  "person:chloe_ballast": {
+    "label": "Chloe Ballast",
+    "type": "person",
+    "title": "Department Lead"
+  },
+  "person:levi_signal": {
+    "label": "Levi Signal",
+    "type": "person"
+  },
+  "person:victoria_rigging": {
+    "label": "Victoria Rigging",
+    "type": "person"
+  },
+  "person:owen_hatch": {
+    "label": "Owen Hatch",
+    "type": "person"
+  },
+  "person:lily_anchorline": {
+    "label": "Lily Anchorline",
+    "type": "person"
+  },
+  "person:gabriel_sonar": {
+    "label": "Gabriel Sonar",
+    "type": "person"
+  },
+  "person:zoey_drydock": {
+    "label": "Zoey Drydock",
+    "type": "person"
+  },
+  "person:john_windward": {
+    "label": "John Windward",
+    "type": "person",
+    "title": "Department Lead"
+  },
+  "person:nora_bulkhead": {
+    "label": "Nora Bulkhead",
+    "type": "person"
+  },
+  "person:julian_seaway": {
+    "label": "Julian Seaway",
+    "type": "person"
+  },
+  "person:hannah_starboard": {
+    "label": "Hannah Starboard",
+    "type": "person"
+  },
+  "person:isaac_mast": {
+    "label": "Isaac Mast",
+    "type": "person"
+  },
+  "person:audrey_portside": {
+    "label": "Audrey Portside",
+    "type": "person"
+  },
+  "person:christopher_jettyline": {
+    "label": "Christopher Jettyline",
+    "type": "person"
+  },
+  "person:layla_channel": {
+    "label": "Layla Channel",
+    "type": "person"
+  },
+  "person:anthony_reef": {
+    "label": "Anthony Reef",
+    "type": "person"
+  },
+  "person:aria_towline": {
+    "label": "Aria Towline",
+    "type": "person"
+  },
+  "person:dylan_hawser": {
+    "label": "Dylan Hawser",
+    "type": "person"
+  },
+  "world:calendar": {
+    "label": "Calendar",
+    "type": "world"
+  },
+  "agent:isaac_mast": {
+    "label": "Isaac Mast (Agente)",
+    "type": "agent"
+  },
+  "agent:lily_anchorline": {
+    "label": "Lily Anchorline (Agente)",
+    "type": "agent"
+  },
+  "agent:mia_fender": {
+    "label": "Mia Fender (Agente)",
+    "type": "agent"
+  },
+  "agent:gabriel_sonar": {
+    "label": "Gabriel Sonar (Agente)",
+    "type": "agent"
+  },
+  "agent:evelyn_dock": {
+    "label": "Evelyn Dock (Agente)",
+    "type": "agent"
+  },
+  "agent:david_breakwater": {
+    "label": "David Breakwater (Agente)",
+    "type": "agent"
+  },
+  "agent:ava_tiller": {
+    "label": "Ava Tiller (Agente)",
+    "type": "agent"
+  },
+  "agent:levi_signal": {
+    "label": "Levi Signal (Agente)",
+    "type": "agent"
+  },
+  "agent:alexander_jetty": {
+    "label": "Alexander Jetty (Agente)",
+    "type": "agent"
+  },
+  "agent:hannah_starboard": {
+    "label": "Hannah Starboard (Agente)",
+    "type": "agent"
+  },
+  "agent:henry_sail": {
+    "label": "Henry Sail (Agente)",
+    "type": "agent"
+  },
+  "agent:daniel_gangway": {
+    "label": "Daniel Gangway (Agente)",
+    "type": "agent"
+  },
+  "agent:avery_sextant": {
+    "label": "Avery Sextant (Agente)",
+    "type": "agent"
+  },
+  "agent:zoey_drydock": {
+    "label": "Zoey Drydock (Agente)",
+    "type": "agent"
+  },
+  "agent:owen_hatch": {
+    "label": "Owen Hatch (Agente)",
+    "type": "agent"
+  },
+  "agent:layla_channel": {
+    "label": "Layla Channel (Agente)",
+    "type": "agent"
+  },
+  "agent:olivia_keel": {
+    "label": "Olivia Keel (Agente)",
+    "type": "agent"
+  },
+  "agent:liam_anchor": {
+    "label": "Liam Anchor (Agente)",
+    "type": "agent"
+  },
+  "system:saidit": {
+    "label": "Saidit",
+    "type": "system"
+  },
+  "agent:victoria_rigging": {
+    "label": "Victoria Rigging (Agente)",
+    "type": "agent"
+  },
+  "agent:james_stern": {
+    "label": "James Stern (Agente)",
+    "type": "agent"
+  },
+  "agent:john_windward": {
+    "label": "John Windward (Agente)",
+    "type": "agent"
+  },
+  "agent:chloe_ballast": {
+    "label": "Chloe Ballast (Agente)",
+    "type": "agent"
+  },
+  "agent:michael_capstan": {
+    "label": "Michael Capstan (Agente)",
+    "type": "agent"
+  },
+  "system:email_server": {
+    "label": "Email Server",
+    "type": "system"
+  },
+  "agent:emily_ferry": {
+    "label": "Emily Ferry (Agente)",
+    "type": "agent"
+  },
+  "agent:charlotte_current": {
+    "label": "Charlotte Current (Agente)",
+    "type": "agent"
+  },
+  "agent:jack_helm": {
+    "label": "Jack Helm (Agente)",
+    "type": "agent"
+  },
+  "agent:emma_harbor": {
+    "label": "Emma Harbor (Agente)",
+    "type": "agent"
+  },
+  "system:file_system": {
+    "label": "File System",
+    "type": "system"
+  },
+  "agent:aria_towline": {
+    "label": "Aria Towline (Agente)",
+    "type": "agent"
+  },
+  "system:flex": {
+    "label": "Flex",
+    "type": "system"
+  },
+  "agent:harper_oar": {
+    "label": "Harper Oar (Agente)",
+    "type": "agent"
+  },
+  "agent:anthony_reef": {
+    "label": "Anthony Reef (Agente)",
+    "type": "agent"
+  },
+  "agent:noah_mariner": {
+    "label": "Noah Mariner (Agente)",
+    "type": "agent"
+  },
+  "agent:sophia_beacon": {
+    "label": "Sophia Beacon (Agente)",
+    "type": "agent"
+  },
+  "agent:dylan_hawser": {
+    "label": "Dylan Hawser (Agente)",
+    "type": "agent"
+  },
+  "agent:nora_bulkhead": {
+    "label": "Nora Bulkhead (Agente)",
+    "type": "agent"
+  },
+  "agent:lucas_compass": {
+    "label": "Lucas Compass (Agente)",
+    "type": "agent"
+  },
+  "agent:christopher_jettyline": {
+    "label": "Christopher Jettyline (Agente)",
+    "type": "agent"
+  },
+  "agent:scarlett_wharf": {
+    "label": "Scarlett Wharf (Agente)",
+    "type": "agent"
+  },
+  "agent:joseph_buoy": {
+    "label": "Joseph Buoy (Agente)",
+    "type": "agent"
+  },
+  "agent:sebastian_cutter": {
+    "label": "Sebastian Cutter (Agente)",
+    "type": "agent"
+  },
+  "agent:julian_seaway": {
+    "label": "Julian Seaway (Agente)",
+    "type": "agent"
+  },
+  "agent:samuel_gull": {
+    "label": "Samuel Gull (Agente)",
+    "type": "agent"
+  },
+  "agent:audrey_portside": {
+    "label": "Audrey Portside (Agente)",
+    "type": "agent"
+  },
+  "agent:abigail_spinnaker": {
+    "label": "Abigail Spinnaker (Agente)",
+    "type": "agent"
+  },
+  "agent:matthew_tide": {
+    "label": "Matthew Tide (Agente)",
+    "type": "agent"
+  },
+  "agent:ella_pilot": {
+    "label": "Ella Pilot (Agente)",
+    "type": "agent"
+  },
+  "agent:amelia_skiff": {
+    "label": "Amelia Skiff (Agente)",
+    "type": "agent"
+  },
+  "agent:grace_lifeboat": {
+    "label": "Grace Lifeboat (Agente)",
+    "type": "agent"
+  },
+  "agent:william_rudder": {
+    "label": "William Rudder (Agente)",
+    "type": "agent"
+  },
+  "agent:benjamin_mooring": {
+    "label": "Benjamin Mooring (Agente)",
+    "type": "agent"
+  }
+}
