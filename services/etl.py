@@ -27,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import config
 from utils.loader import load_json
 from utils.parser import build_graph
+from utils.timestamp_resolver import resolve_event_timestamp
 from services.identity_graph import build_entity_registry, build_unified_graph
 from services.identity_resolver import build_name_lookup, resolve_party
 
@@ -37,11 +38,15 @@ def _flatten_events(events: list, name_lookup: dict) -> pd.DataFrame:
     for event in events:
         raw_parties = event.get("parties", []) or []
         resolved = [resolve_party(p, name_lookup) for p in raw_parties]
+        short_name = event.get("short_name")
+
+        details_raw = event.get("details")
+        embedded_ts, ts_source = resolve_event_timestamp(short_name, details_raw)
 
         rows.append(
             {
                 "id": event.get("id"),
-                "short_name": event.get("short_name"),
+                "short_name": short_name,
                 "when": event.get("when"),
                 "datetime_utc": pd.to_datetime(event.get("when"), unit="s", utc=True),
                 "parties_raw": raw_parties,
@@ -49,12 +54,24 @@ def _flatten_events(events: list, name_lookup: dict) -> pd.DataFrame:
                 "parties_types": [r.type for r in resolved if r.resolved],
                 # `details` varia de formato conforme short_name; guardamos como
                 # JSON string para não forçar um schema único no Parquet.
-                "details": json.dumps(event.get("details"), ensure_ascii=False),
+                "details": json.dumps(details_raw, ensure_ascii=False),
+                # Timestamp mais confiável disponível: se `details` trouxer um
+                # ISO embutido (ver utils/timestamp_resolver.py), usa ele;
+                # senão cai em datetime_utc (derivado de `when`, que é hora
+                # de log, não hora real da ação).
+                "event_time_utc": (
+                    pd.to_datetime(embedded_ts, utc=True)
+                    if embedded_ts
+                    else pd.to_datetime(event.get("when"), unit="s", utc=True)
+                ),
+                "time_source": ts_source or "fallback_when",
             }
         )
 
     df = pd.DataFrame(rows)
-    df.sort_values("when", inplace=True)
+    # Ordenar por event_time_utc (não por `when`) — é a ordem cronológica
+    # real que interessa pra Timeline e Cadeia de Eventos.
+    df.sort_values("event_time_utc", inplace=True)
     df.reset_index(drop=True, inplace=True)
     return df
 
@@ -88,6 +105,9 @@ def run() -> None:
     print("[4/5] Achatando eventos em DataFrame ...")
     name_lookup = build_name_lookup(org_graph)
     events_df = _flatten_events(events, name_lookup)
+    embedded_count = (events_df["time_source"] == "embedded").sum()
+    print(f"      timestamp embutido confiável: {embedded_count}/{len(events_df)} "
+          f"({100 * embedded_count / len(events_df):.1f}%) — restante usa fallback (when)")
 
     print("[5/5] Gravando artefatos em", config.PROCESSED_DIR, "...")
     events_df.to_parquet(config.EVENTS_PARQUET, index=False)
