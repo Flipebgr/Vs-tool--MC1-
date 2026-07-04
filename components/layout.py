@@ -45,6 +45,16 @@ def create_layout(elements, stats, filter_options):
             # centralização de câmera — ele não renderiza nada visível.
             html.Div(id="centering-dummy-output", style={"display": "none"}),
 
+            # Ponte invisível entre o evento nativo de clique no fundo do
+            # Cytoscape e o callback Python. O JavaScript dispara este botão
+            # quando o usuário toca em uma área sem nós ou arestas.
+            html.Button(
+                id="clear-graph-highlight",
+                n_clicks=0,
+                style={"display": "none"},
+                **{"aria-hidden": "true"},
+            ),
+
         ]
 
     )
