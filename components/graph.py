@@ -143,10 +143,20 @@ def graph_component(elements):
 
             # --- Destaque de busca (Módulo 3) -----------------------------
             {
+                "selector": "node.temporal-context",
+                "style": {
+                    "opacity": 0.42,
+                    "border-width": 1,
+                    "border-style": "dashed",
+                    "border-color": "#64748b",
+                },
+            },
+            {
                 "selector": "node.highlighted",
                 "style": {
                     "border-width": 4,
                     "border-color": "#2c3e50",
+                    "opacity": 1,
                     "z-index": 999,
                 },
             },
@@ -162,6 +172,54 @@ def graph_component(elements):
                 "selector": "node.faded",
                 "style": {
                     "opacity": 0.15,
+                },
+            },
+            {
+                "selector": "node.event-participant",
+                "style": {
+                    "border-width": 5,
+                    "border-color": "#0f172a",
+                    "opacity": 1,
+                    "padding": "15px",
+                    "font-weight": "bold",
+                    "text-background-color": "#ffffff",
+                    "text-background-opacity": 0.82,
+                    "text-background-padding": "3px",
+                    "z-index": 1000,
+                },
+            },
+            {
+                "selector": "edge.event-participant-edge",
+                "style": {
+                    "width": 4,
+                    "line-color": "#0f766e",
+                    "target-arrow-color": "#0f766e",
+                    "opacity": 1,
+                    "z-index": 1000,
+                },
+            },
+            {
+                "selector": "node.chain-participant",
+                "style": {
+                    "border-width": 6,
+                    "border-color": "#7c3aed",
+                    "opacity": 1,
+                    "padding": "16px",
+                    "font-weight": "bold",
+                    "text-background-color": "#ffffff",
+                    "text-background-opacity": 0.9,
+                    "text-background-padding": "3px",
+                    "z-index": 1100,
+                },
+            },
+            {
+                "selector": "edge.chain-participant-edge",
+                "style": {
+                    "width": 5,
+                    "line-color": "#7c3aed",
+                    "target-arrow-color": "#7c3aed",
+                    "opacity": 1,
+                    "z-index": 1100,
                 },
             },
             {

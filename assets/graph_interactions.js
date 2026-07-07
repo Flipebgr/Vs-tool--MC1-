@@ -3,10 +3,8 @@
  * propriedades declarativas:
  *
  * 1. centralizar a câmera no nó encontrado pela busca;
- * 2. detectar clique no fundo vazio do grafo para limpar o destaque.
- *
- * A instância viva do Cytoscape.js fica em `_cyreg.cy` no elemento DOM do
- * componente. Essa referência já era usada pela centralização de câmera.
+ * 2. enquadrar todos os participantes de um evento selecionado na Timeline;
+ * 3. detectar clique no fundo vazio do grafo para limpar o destaque.
  */
 window.dash_clientside = window.dash_clientside || {};
 
@@ -27,9 +25,6 @@ window.dash_clientside = window.dash_clientside || {};
     function ensureBackgroundTapHandler(attempt) {
         const cy = getCyInstance();
 
-        // Na carga inicial, o componente React pode existir antes da instância
-        // Cytoscape. Fazemos tentativas curtas e limitadas para registrar o
-        // listener sem exigir qualquer ação do usuário.
         if (!cy) {
             if (attempt < MAX_ATTACH_ATTEMPTS) {
                 window.setTimeout(function () {
@@ -39,16 +34,12 @@ window.dash_clientside = window.dash_clientside || {};
             return;
         }
 
-        // Evita registrar o mesmo listener novamente quando a busca centraliza
-        // outros nós ou quando callbacks atualizam os elementos do grafo.
         if (cy.scratch("_tenantThreadBackgroundTapInstalled")) {
             return;
         }
 
         cy.scratch("_tenantThreadBackgroundTapInstalled", true);
         cy.on("tap", function (event) {
-            // Quando o alvo do evento é a própria instância `cy`, o clique foi
-            // no canvas vazio — não em um nó ou aresta.
             if (event.target !== cy) {
                 return;
             }
@@ -60,13 +51,28 @@ window.dash_clientside = window.dash_clientside || {};
         });
     }
 
+    function collectionFromIds(cy, targetValue) {
+        const ids = Array.isArray(targetValue) ? targetValue : [targetValue];
+        let collection = cy.collection();
+
+        ids.forEach(function (nodeId) {
+            if (!nodeId) {
+                return;
+            }
+            const node = cy.getElementById(nodeId);
+            if (node && node.length > 0) {
+                collection = collection.union(node);
+            }
+        });
+
+        return collection;
+    }
+
     window.dash_clientside.graph_interactions = {
-        center_on_node: function (nodeId) {
-            // O callback também roda na inicialização; aproveitamos essa
-            // execução para instalar o listener de clique no fundo.
+        center_on_node: function (targetValue) {
             ensureBackgroundTapHandler(0);
 
-            if (!nodeId) {
+            if (!targetValue) {
                 return window.dash_clientside.no_update;
             }
 
@@ -75,10 +81,19 @@ window.dash_clientside = window.dash_clientside || {};
                 return window.dash_clientside.no_update;
             }
 
-            const target = cy.getElementById(nodeId);
-            if (target && target.length > 0) {
+            const targets = collectionFromIds(cy, targetValue);
+            if (!targets || targets.length === 0) {
+                return window.dash_clientside.no_update;
+            }
+
+            if (targets.length === 1) {
                 cy.animate(
-                    { center: { eles: target }, zoom: 1.5 },
+                    { center: { eles: targets }, zoom: 1.5 },
+                    { duration: 500 }
+                );
+            } else {
+                cy.animate(
+                    { fit: { eles: targets, padding: 90 } },
                     { duration: 500 }
                 );
             }
