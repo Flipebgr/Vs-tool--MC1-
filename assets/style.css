@@ -34,7 +34,9 @@ body{
 
     display:flex;
 
-    height:75vh;
+    height:58vh;
+
+    min-height:480px;
 
 }
 
@@ -66,6 +68,221 @@ body{
 
     border-top:1px solid #ddd;
 
-    height:18vh;
+    min-height:120px;
 
+}
+/* --- Sprint 3: Timeline investigativa ---------------------------------- */
+.timeline-panel {
+    background: white;
+    border-top: 1px solid #d9dee7;
+    border-bottom: 1px solid #d9dee7;
+    padding: 14px 20px 10px;
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.timeline-title {
+    margin: 0 0 4px;
+}
+
+.timeline-help,
+.timeline-status {
+    margin: 0;
+    color: #526071;
+    font-size: 13px;
+}
+
+.timeline-status {
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.timeline-reset-button {
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    background: #f8fafc;
+    padding: 7px 11px;
+    cursor: pointer;
+}
+
+.timeline-event-details {
+    min-height: 42px;
+    margin-top: 6px;
+    padding: 10px 12px;
+    border-left: 3px solid #64748b;
+    background: #f8fafc;
+    color: #334155;
+    font-size: 13px;
+}
+
+.timeline-event-details ul {
+    margin: 5px 0 0 18px;
+    padding: 0;
+}
+
+/* Correção de usabilidade da Timeline: navegação determinística por evento. */
+.timeline-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 7px;
+    max-width: 720px;
+}
+
+.timeline-event-id-input {
+    width: 190px;
+    min-height: 34px;
+    border: 1px solid #94a3b8;
+    border-radius: 5px;
+    padding: 5px 8px;
+}
+
+.timeline-action-button {
+    border: 1px solid #64748b;
+    border-radius: 5px;
+    background: #ffffff;
+    padding: 7px 11px;
+    cursor: pointer;
+}
+
+.timeline-anomaly-button {
+    background: #fff7ed;
+    border-color: #ea580c;
+    color: #9a3412;
+    font-weight: 600;
+}
+
+/* --- Sprint 3: Cadeia de Eventos -------------------------------------- */
+.chain-panel {
+    background: white;
+    border-bottom: 1px solid #d9dee7;
+    padding: 16px 20px 18px;
+}
+
+.chain-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.chain-title {
+    margin: 0 0 4px;
+}
+
+.chain-help,
+.chain-status,
+.chain-seed-summary {
+    margin: 0;
+    color: #526071;
+    font-size: 13px;
+}
+
+.chain-seed-summary {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.chain-status {
+    margin-top: 5px;
+}
+
+.chain-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    min-width: 460px;
+}
+
+.chain-mode-dropdown {
+    width: 245px;
+}
+
+.chain-build-button,
+.chain-clear-button {
+    border-radius: 5px;
+    padding: 7px 11px;
+    cursor: pointer;
+}
+
+.chain-build-button {
+    border: 1px solid #6d28d9;
+    background: #7c3aed;
+    color: white;
+    font-weight: 600;
+}
+
+.chain-build-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.chain-clear-button {
+    border: 1px solid #94a3b8;
+    background: #f8fafc;
+}
+
+.chain-event-list {
+    max-height: 430px;
+    overflow-y: auto;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 8px;
+}
+
+.chain-event-card {
+    margin: 7px 0;
+    padding: 9px 11px;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #94a3b8;
+    border-radius: 4px;
+    background: #f8fafc;
+    font-size: 13px;
+}
+
+.chain-role-origin { border-left-color: #2563eb; }
+.chain-role-instruction { border-left-color: #0891b2; }
+.chain-role-handoff { border-left-color: #7c3aed; }
+.chain-role-seed { border-left-color: #dc2626; background: #fef2f2; }
+.chain-role-aftermath { border-left-color: #ea580c; }
+
+.chain-event-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.chain-event-id,
+.chain-event-time {
+    color: #64748b;
+}
+
+.chain-event-reason {
+    margin-top: 4px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.chain-event-participants,
+.chain-event-artifacts {
+    margin-top: 3px;
+    color: #475569;
+}
+
+@media (max-width: 900px) {
+    .chain-header {
+        flex-direction: column;
+    }
+    .chain-controls {
+        min-width: 0;
+        width: 100%;
+        justify-content: flex-start;
+    }
 }
