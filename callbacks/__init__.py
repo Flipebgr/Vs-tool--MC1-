@@ -11,6 +11,7 @@ from callbacks import (
     layout_callbacks,
     timeline_callbacks,
     chain_callbacks,
+    analysis_callbacks,
 )
 
 
@@ -20,3 +21,4 @@ def register_callbacks(app):
     layout_callbacks.register(app)
     timeline_callbacks.register(app)
     chain_callbacks.register(app)
+    analysis_callbacks.register(app)
