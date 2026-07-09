@@ -6,6 +6,7 @@ from components.graph import graph_component
 from components.info_panel import create_info_panel
 from components.timeline import create_timeline
 from components.chain_panel import create_chain_panel
+from components.analysis_panel import create_analysis_panel
 
 
 def create_layout(elements, stats, filter_options):
@@ -40,6 +41,8 @@ def create_layout(elements, stats, filter_options):
 
             create_chain_panel(),
 
+            create_analysis_panel(),
+
             create_info_panel(),
 
             # Guarda o id do nó atualmente destacado pela busca; ao mudar,
@@ -49,6 +52,9 @@ def create_layout(elements, stats, filter_options):
 
             # Cadeia reconstruída a partir do evento selecionado na Timeline.
             dcc.Store(id="event-chain-store"),
+
+            # Resultado estruturado das Questões 1, 2 e 3.
+            dcc.Store(id="analysis-store"),
 
             # Output "morto" exigido pelo Dash para o clientside_callback de
             # centralização de câmera — ele não renderiza nada visível.
