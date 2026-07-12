@@ -163,6 +163,7 @@ def build_filtered_elements(
     highlight_node_id: Optional[str] = None,
     highlight_node_ids: Optional[Iterable[str]] = None,
     chain_node_ids: Optional[Iterable[str]] = None,
+    visual_node_ids: Optional[Iterable[str]] = None,
     active_node_ids: Optional[Iterable[str]] = None,
 ) -> list:
     """Monta elementos Cytoscape filtrados e aplica classes visuais.
@@ -196,9 +197,14 @@ def build_filtered_elements(
         for node_id in (chain_node_ids or [])
         if node_id in visible_nodes
     }
+    visual_participant_ids = {
+        node_id
+        for node_id in (visual_node_ids or [])
+        if node_id in visible_nodes
+    }
 
     neighbor_ids: Set[str] = set()
-    if not chain_participant_ids and not event_participant_ids and highlight_node_id and highlight_node_id in visible_nodes:
+    if not chain_participant_ids and not visual_participant_ids and not event_participant_ids and highlight_node_id and highlight_node_id in visible_nodes:
         for _, target, attrs in G.out_edges(highlight_node_id, data=True):
             relation = attrs.get("relation", "")
             if target in visible_nodes and (relation_set is None or relation in relation_set):
@@ -220,6 +226,11 @@ def build_filtered_elements(
         if chain_participant_ids:
             if node_id in chain_participant_ids:
                 classes.append("chain-participant")
+            else:
+                classes.append("faded")
+        elif visual_participant_ids:
+            if node_id in visual_participant_ids:
+                classes.append("visual-analytics-participant")
             else:
                 classes.append("faded")
         elif event_participant_ids:
@@ -258,6 +269,11 @@ def build_filtered_elements(
         if chain_participant_ids:
             if source in chain_participant_ids and target in chain_participant_ids:
                 classes.append("chain-participant-edge")
+            else:
+                classes.append("faded")
+        elif visual_participant_ids:
+            if source in visual_participant_ids and target in visual_participant_ids:
+                classes.append("visual-analytics-participant-edge")
             else:
                 classes.append("faded")
         elif event_participant_ids:

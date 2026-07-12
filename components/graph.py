@@ -223,6 +223,30 @@ def graph_component(elements):
                 },
             },
             {
+                "selector": "node.visual-analytics-participant",
+                "style": {
+                    "border-width": 6,
+                    "border-color": "#0891b2",
+                    "opacity": 1,
+                    "padding": "16px",
+                    "font-weight": "bold",
+                    "text-background-color": "#ecfeff",
+                    "text-background-opacity": 0.92,
+                    "text-background-padding": "3px",
+                    "z-index": 1150,
+                },
+            },
+            {
+                "selector": "edge.visual-analytics-participant-edge",
+                "style": {
+                    "width": 5,
+                    "line-color": "#0891b2",
+                    "target-arrow-color": "#0891b2",
+                    "opacity": 1,
+                    "z-index": 1150,
+                },
+            },
+            {
                 "selector": "edge.highlighted-edge",
                 "style": {
                     "width": 3,
