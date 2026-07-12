@@ -57,6 +57,7 @@ def register(app):
         Input("time-range-store", "data"),
         Input("chain-start-store", "data"),
         Input("event-chain-store", "data"),
+        Input("visual-analytics-selection-store", "data"),
         State("search-node", "value"),
     )
     def update_graph(
@@ -69,6 +70,7 @@ def register(app):
         time_range,
         chain_start,
         event_chain,
+        visual_selection,
         query,
     ):
         G = load_graph()
@@ -76,12 +78,16 @@ def register(app):
 
         triggered_props = set(ctx.triggered_prop_ids)
         chain_selection_triggered = "event-chain-store.data" in triggered_props
+        visual_selection_triggered = "visual-analytics-selection-store.data" in triggered_props
         chain_node_ids = set(event_chain.get("entity_ids", [])) if event_chain else set()
+        visual_node_ids = set((visual_selection or {}).get("entity_ids", []))
         # A cadeia pode atravessar vários dias. Na reconstrução, seus atores
         # são adicionados ao escopo temporal para não desaparecerem por causa
         # da janela curta atualmente selecionada na Timeline.
         if chain_selection_triggered and chain_node_ids and active_node_ids is not None:
             active_node_ids = set(active_node_ids) | chain_node_ids
+        if visual_selection_triggered and visual_node_ids and active_node_ids is not None:
+            active_node_ids = set(active_node_ids) | visual_node_ids
 
         visible_ids = get_visible_node_ids(
             G,
@@ -94,6 +100,7 @@ def register(app):
         highlight_id = None
         event_participant_ids = None
         chain_participant_ids = None
+        visual_participant_ids = None
         centered_node_target = None
         feedback = ""
 
@@ -107,6 +114,19 @@ def register(app):
             feedback = (
                 f"Cadeia reconstruída — {len(chain_participant_ids)} entidade(s) destacada(s)"
             )
+
+        elif visual_selection_triggered:
+            visual_participant_ids = [node_id for node_id in visual_node_ids if node_id in visible_ids]
+            centered_node_target = visual_participant_ids or None
+            hidden_count = len(visual_node_ids) - len(visual_participant_ids)
+            if visual_participant_ids:
+                feedback = f"Visual Analytics — {len(visual_participant_ids)} entidade(s) destacada(s)"
+                if hidden_count:
+                    feedback += f"; {hidden_count} oculta(s) pelos filtros ativos"
+            elif visual_node_ids:
+                feedback = "Visual Analytics — entidade selecionada está oculta pelos filtros ativos"
+            else:
+                feedback = "Destaque do Visual Analytics removido"
 
         # A Timeline pode atualizar `time-range-store` e `chain-start-store` no
         # mesmo ciclo. A seleção do evento tem prioridade para que seus
@@ -163,6 +183,7 @@ def register(app):
             highlight_node_id=highlight_id,
             highlight_node_ids=event_participant_ids,
             chain_node_ids=chain_participant_ids,
+            visual_node_ids=visual_participant_ids,
             active_node_ids=active_node_ids,
         )
 

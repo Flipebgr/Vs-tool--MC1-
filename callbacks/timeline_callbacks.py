@@ -154,6 +154,7 @@ def register(app):
         Input("timeline-reset-button", "n_clicks"),
         Input("timeline-locate-event-button", "n_clicks"),
         Input("timeline-anomaly-button", "n_clicks"),
+        Input("visual-timeline-request-store", "data"),
         State("time-range-store", "data"),
         State("timeline-event-id-input", "value"),
         prevent_initial_call=True,
@@ -164,6 +165,7 @@ def register(app):
         _reset_clicks,
         _locate_clicks,
         _anomaly_clicks,
+        visual_timeline_request,
         current_range,
         requested_event_id,
     ):
@@ -172,6 +174,19 @@ def register(app):
 
         if triggered_id == "timeline-anomaly-button":
             return _focus_event(ANOMALOUS_EVENT_ID)
+
+        if triggered_id == "visual-timeline-request-store":
+            requested = (visual_timeline_request or {}).get("event_id")
+            focused = _focus_event(requested)
+            if focused:
+                return focused
+            return (
+                no_update,
+                no_update,
+                no_update,
+                html.Div(f"Evento {requested!s} não encontrado."),
+                no_update,
+            )
 
         if triggered_id == "timeline-locate-event-button":
             focused = _focus_event(requested_event_id)

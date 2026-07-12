@@ -1,53 +1,19 @@
 from dash import html, dcc
 
 from components.header import create_header
-from components.sidebar import create_sidebar
-from components.graph import graph_component
-from components.info_panel import create_info_panel
-from components.timeline import create_timeline
-from components.chain_panel import create_chain_panel
-from components.analysis_panel import create_analysis_panel
+from components.workspace import create_workspace
 
 
 def create_layout(elements, stats, filter_options):
-
     return html.Div(
-
         [
-
             create_header(),
+            create_workspace(elements, stats, filter_options),
 
-            html.Div(
+            # Estado de navegação entre as visualizações.
+            dcc.Store(id="active-view-store", data="graph"),
 
-                [
-
-                    create_sidebar(stats, filter_options),
-
-                    html.Div(
-
-                        graph_component(elements),
-
-                        className="graph-container"
-
-                    )
-
-                ],
-
-                className="main-container"
-
-            ),
-
-            create_timeline(),
-
-            create_chain_panel(),
-
-            create_analysis_panel(),
-
-            create_info_panel(),
-
-            # Guarda o id do nó atualmente destacado pela busca; ao mudar,
-            # dispara o callback clientside que centraliza a câmera nele
-            # (callbacks/graph_callbacks.py + assets/graph_interactions.js).
+            # Guarda o id do nó atualmente destacado pela busca ou seleção.
             dcc.Store(id="centered-node-store"),
 
             # Cadeia reconstruída a partir do evento selecionado na Timeline.
@@ -56,20 +22,21 @@ def create_layout(elements, stats, filter_options):
             # Resultado estruturado das Questões 1, 2 e 3.
             dcc.Store(id="analysis-store"),
 
-            # Output "morto" exigido pelo Dash para o clientside_callback de
-            # centralização de câmera — ele não renderiza nada visível.
-            html.Div(id="centering-dummy-output", style={"display": "none"}),
+            # Modelo e seleção compartilhados pelas visões coordenadas.
+            dcc.Store(id="visual-analytics-store"),
+            dcc.Store(id="visual-analytics-selection-store"),
+            dcc.Store(id="visual-timeline-request-store"),
 
-            # Ponte invisível entre o evento nativo de clique no fundo do
-            # Cytoscape e o callback Python. O JavaScript dispara este botão
-            # quando o usuário toca em uma área sem nós ou arestas.
+            # Outputs invisíveis de callbacks clientside.
+            html.Div(id="centering-dummy-output", style={"display": "none"}),
+            html.Div(id="workspace-resize-dummy", style={"display": "none"}),
+
+            # Ponte invisível para limpar destaque ao clicar no fundo do grafo.
             html.Button(
                 id="clear-graph-highlight",
                 n_clicks=0,
                 style={"display": "none"},
                 **{"aria-hidden": "true"},
             ),
-
         ]
-
     )

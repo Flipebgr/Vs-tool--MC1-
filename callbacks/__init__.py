@@ -1,9 +1,4 @@
-"""
-Ponto único de registro de callbacks. app.py só precisa chamar
-`register_callbacks(app)` uma vez — cada módulo de callback (node, graph,
-search, filter, timeline...) se registra aqui conforme for sendo
-implementado nos próximos módulos.
-"""
+"""Ponto único de registro de callbacks da aplicação."""
 
 from callbacks import (
     node_callbacks,
@@ -12,6 +7,8 @@ from callbacks import (
     timeline_callbacks,
     chain_callbacks,
     analysis_callbacks,
+    visual_analytics_callbacks,
+    navigation_callbacks,
 )
 
 
@@ -22,3 +19,5 @@ def register_callbacks(app):
     timeline_callbacks.register(app)
     chain_callbacks.register(app)
     analysis_callbacks.register(app)
+    visual_analytics_callbacks.register(app)
+    navigation_callbacks.register(app)
