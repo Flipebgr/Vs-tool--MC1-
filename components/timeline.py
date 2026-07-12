@@ -226,6 +226,7 @@ def create_timeline():
                 figure=figure,
                 config={
                     "displaylogo": False,
+                    "responsive": True,
                     "scrollZoom": True,
                     "modeBarButtonsToRemove": ["lasso2d", "select2d"],
                 },

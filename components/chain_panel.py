@@ -266,7 +266,7 @@ def create_chain_panel():
             dcc.Graph(
                 id="chain-graph",
                 figure=_blank_figure(),
-                config={"displaylogo": False, "scrollZoom": True},
+                config={"displaylogo": False, "responsive": True, "scrollZoom": True},
             ),
             html.Div(id="chain-event-list", className="chain-event-list"),
         ],

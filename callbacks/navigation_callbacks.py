@@ -96,12 +96,32 @@ def register(app):
     app.clientside_callback(
         """
         function(activeView, comparisonTab) {
-            window.setTimeout(function() {
+            function resizeActiveView() {
+                if (window.Plotly && (activeView === 'timeline' || activeView === 'chain')) {
+                    const plotId = activeView === 'timeline' ? 'timeline-graph' : 'chain-graph';
+                    const container = document.getElementById(plotId);
+                    const plot = container && (
+                        container.matches('.js-plotly-plot')
+                            ? container
+                            : container.querySelector('.js-plotly-plot')
+                    );
+                    const isVisible = plot && plot.getClientRects().length > 0;
+                    if (isVisible && plot._fullLayout && Array.isArray(plot.data)) {
+                        window.Plotly.Plots.resize(plot);
+                    }
+                }
+                if (activeView === 'graph') {
+                    const graph = document.getElementById('graph');
+                    const cy = graph && graph._cyreg && graph._cyreg.cy;
+                    if (cy && typeof cy.resize === 'function') {
+                        cy.resize();
+                    }
+                }
                 window.dispatchEvent(new Event('resize'));
-            }, 80);
+            }
             window.setTimeout(function() {
-                window.dispatchEvent(new Event('resize'));
-            }, 260);
+                resizeActiveView();
+            }, 100);
             return String(activeView || '') + ':' + String(comparisonTab || '');
         }
         """,
